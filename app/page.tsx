@@ -19,11 +19,11 @@ export default function Home() {
             {/*<FilterBar/>
             <Link href="">Add recipe</Link> */}
             <div className={styles.recipeGrid}>
-                <RecipeCard name='Vegan Tantanmen' image_uri='/recipe_photos/tantanmen.jpeg' />
-                <RecipeCard name='Pita Chips' image_uri='/recipe_photos/pita-chips.jpg' />
-                <RecipeCard name='Hummus' image_uri='/recipe_photos/hummus.jpg' />
-                <RecipeCard name='Lentil Soup' image_uri='/recipe_photos/lentil-soup.jpg' />
-                <RecipeCard name='Peanut Noodles' image_uri='/recipe_photos/peanut-noodles.jpg' />
+                <RecipeCard name='Vegan Tantanmen' image_uri='tantanmen.jpeg' />
+                <RecipeCard name='Pita Chips' image_uri='pita-chips.jpg' />
+                <RecipeCard name='Hummus' image_uri='hummus.jpg' />
+                <RecipeCard name='Lentil Soup' image_uri='lentil-soup.jpg' />
+                <RecipeCard name='Peanut Noodles' image_uri='peanut-noodles.jpg' />
             </div>
         </main>
 

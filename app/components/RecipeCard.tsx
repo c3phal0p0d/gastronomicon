@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+
 import styles from './RecipeCard.module.css';
 
 type RecipeCardProps = {
@@ -9,7 +11,7 @@ type RecipeCardProps = {
 const RecipeCard = ({name, image_uri}: RecipeCardProps) => {
     return ( 
         <div className={styles.recipeCard}>
-            <img className={styles.image} src={image_uri}></img>
+            <Image className={styles.image} src={"/recipe-photos/"+ image_uri} alt='' width="1000" height="250"/>
             <h3 className={styles.name}>{name}</h3>
         </div> 
     );

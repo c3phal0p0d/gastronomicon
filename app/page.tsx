@@ -12,7 +12,7 @@ export default function Home() {
         <main className={styles.main}>
             {/* <Link href="">Logout</Link> */}
             <div className={styles.headingContainer}>
-                <object type="image/svg+xml" data="/icon.svg" className={styles.icon} />
+                <object type="image/svg+xml" data="/icon4.svg" className={styles.icon} />
                 <h1 className={styles.heading}>Gastronomicon</h1>
             </div>
             <SearchBar/>

@@ -20,7 +20,9 @@ export default function Home() {
             <Link href="">Add recipe</Link> */}
             <div className={styles.recipeGrid}>
                 <RecipeCard name='Vegan Tantanmen' image_uri='tantanmen.jpeg' />
+                <Link href="/recipe/656ec3a9ef98c1d61a5ef6a6">
                 <RecipeCard name='Pita Chips' image_uri='pita-chips.jpg' />
+                </Link>
                 <RecipeCard name='Hummus' image_uri='hummus.jpg' />
                 <RecipeCard name='Lentil Soup' image_uri='lentil-soup.jpg' />
                 <RecipeCard name='Peanut Noodles' image_uri='peanut-noodles.jpg' />

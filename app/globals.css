@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100;10..100,200;10..100,300;10..100,400;10..100,500;10..100,600;10..100,700;10..100,800;10..100,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @font-face {
     font-family: Rumble Brave;
@@ -12,11 +13,13 @@
     --text-color: rgb(203, 173, 118);
     --dark-accent: rgb(19, 21, 29);
     --light-accent: rgb(224, 199, 152);
+    --text-color-light: rgb(214, 207, 193);
 
     --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
     --font-heading: 'Philosopher';
+    --font-body: 'Noto Sans';
     --max-width: 1100px;
     --border-radius: 5px;
 }

@@ -1,10 +1,52 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import styles from './page.module.css'
+"use client";
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from './page.module.css';
+import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
+import { useForm, SubmitHandler } from "react-hook-form";
 
-// import {ReactComponent as Icon} from "../public/icon.svg"
+type Inputs = {
+    email: string;
+    password: string;
+};
 
-export default function Home() {
+
+export default function Login() {
+    const params = useSearchParams()!;
+    const session = useSession();
+    const router = useRouter();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+    } = useForm<Inputs>({
+        defaultValues: {
+            email: "",
+            password: "",
+        },
+    });
+
+    const [error, setError] = useState<string | null>("");
+
+    useEffect(() => {
+        setError(params.get("error"));
+      }, [params]);
+
+    if (session.status === "authenticated") {
+        router?.push("/");
+    }
+
+    const formSubmit: SubmitHandler<Inputs> = (form) => {
+        const { email, password } = form;
+        signIn("credentials", {
+            email,
+            password,
+        });
+    };
+
     return (
         <main className={styles.main}>
             <div className={styles.headingContainer}>
@@ -13,14 +55,13 @@ export default function Home() {
             </div>
             <div className={styles.loginContainer}>
                 <h2 className={styles.loginHeading}>Log in to your account</h2>
-                <form className={styles.loginForm}>
+                <form className={styles.loginForm} onSubmit={handleSubmit(formSubmit)}>
                     <input className={styles.formField} type="email" placeholder="Email" />
                     <input className={styles.formField} type="password" placeholder="Password" />
                     <button className={styles.loginButton} type="submit">Log in</button>
                 </form>
             </div>
         </main>
-
 
     );
 }

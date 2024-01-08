@@ -1,22 +1,27 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { NextAuthProvider } from "./Provider";
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Gastronomicon',
-  description: 'Recipe collection app',
+    title: 'Gastronomicon',
+    description: 'Recipe app',
 }
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <body className={inter.className}>
+                <NextAuthProvider>
+                    {children}
+                </NextAuthProvider>
+            </body>
+        </html>
+    )
 }

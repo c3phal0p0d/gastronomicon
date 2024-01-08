@@ -10,7 +10,9 @@ import FilterBar from './components/FilterBar';
 export default function Home() {
     return (
         <main className={styles.main}>
-            {/* <Link href="">Logout</Link> */}
+            <button className={styles.logoutButton}>
+                <object type="image/svg+xml" data="/logout.svg" className={styles.icon} />
+            </button>
             <div className={styles.headingContainer}>
                 <object type="image/svg+xml" data="/icon4.svg" className={styles.icon} />
                 <h1 className={styles.heading}>Gastronomicon</h1>

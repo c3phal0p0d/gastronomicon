@@ -11,16 +11,16 @@ import { redirect } from "next/navigation";
 
 export default async function Home() {
     const session = await getServerSession(authOptions);
-    // if (!session) {
-    //     redirect("/login");
-    // }
+    if (!session) {
+        redirect("/login");
+    }
     return (
         <main className={styles.main}>
             <button className={styles.logoutButton}>
                 <object type="image/svg+xml" data="/logout.svg" className={styles.icon} />
             </button>
             <div className={styles.headingContainer}>
-                <object type="image/svg+xml" data="/icon4.svg" className={styles.icon} />
+                <object type="image/svg+xml" data="/icon.svg" className={styles.icon} />
                 <h1 className={styles.heading}>Gastronomicon</h1>
             </div>
             <SearchBar />

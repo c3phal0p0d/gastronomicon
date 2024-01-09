@@ -1,6 +1,5 @@
 .recipeCard {
     width: 15rem;
-    margin: 0.5rem;
     color: var(--light-accent);
     border-radius: var(--border-radius);
     padding: 0.7rem 0.2rem;

@@ -26,19 +26,23 @@ export const authOptions: NextAuthOptions = {
                 password: { label: "Password", type: "password" },
             },
             async authorize(credentials, req) {
-                console.log("authorize")
                 await dbConnect();
 
                 if (credentials == null) return null;
                 try {
+                    console.log(credentials);
                     const user = await User.findOne({ email: credentials.email });
 
                     if (user) {
-                        const isMatch = await bcrypt.compare(
-                            credentials.password,
-                            user.password,
-                        );
-                        if (isMatch) {
+                        console.log(user);
+                        console.log(credentials.password)
+                        // const isMatch = await bcrypt.compare(
+                        //     credentials.password,
+                        //     user.password,
+                        // );
+                        // if (isMatch) {
+                        //     return user;
+                        if (credentials.password == user.password){
                             return user;
                         } else {
                             throw new Error("Email or password is incorrect");

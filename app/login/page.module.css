@@ -18,7 +18,7 @@
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: 3.5rem;
-    margin-top: -70px;
+    margin-top: -20px;
 }
 
 .loginContainer {
@@ -44,7 +44,6 @@
     padding: 0.7rem;
     width: 100%;
     margin-bottom: 0.5rem;
-    border-radius: 15px;
 }
 
 .formField:focus-visible {
@@ -65,4 +64,8 @@
 .loginHeading {
     font: var(--font-heading);
     font-size: 1.5rem;
+}
+
+.icon {
+    width: 150px;
 }

@@ -1,9 +1,20 @@
 .search {
     margin: 10px;
-    padding: 15px;
-    border: 0.5px solid var(--light-accent);
+    padding: 15px 100px;
     color: var(--light-accent);
-    border-radius: 15px;
+    background-color: var(--dark-accent);
     font-size: 0.9rem;
-    width: 20%;
+    width: 100%;
+    border-radius: 15px;
+    text-align: left;
+    align-items: left;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.icon {
+    width: 20px;
 }

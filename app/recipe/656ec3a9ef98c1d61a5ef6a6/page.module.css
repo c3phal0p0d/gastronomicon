@@ -32,7 +32,6 @@
 
 .instructions > li {
     margin: 1rem;
-    line-height: 1.5rem;
 }
 
 .ingredients > li {
@@ -45,18 +44,16 @@
 
 .left {
     margin: 1rem;
-    padding: 1rem;
+    padding: 1.2rem;
+    background-color: var(--dark-accent);
 }
 
 .right {
-    margin: 1rem 1rem;
+    margin: 0rem 1rem;
     padding: 1rem;
 }
 
-.originalRecipeLink {
-    margin: 2.5rem 1rem;
-    font-size: 0.9rem;
-    text-align: right;
+.originalRecipeLink > Link {
     font-style: italic;
     font-weight: 200;
 }

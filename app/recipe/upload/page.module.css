@@ -10,10 +10,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0.5rem;
 }
 
 .heading {
-    text-transform: uppercase;
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: 2rem;
@@ -32,6 +32,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 70%;
 }
 
 .formField {
@@ -53,6 +54,9 @@
     border: none;
     padding: 0.7rem;
     width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 20vh;
     margin-bottom: 0.5rem;
     font-family: var(--font-body);
     font-size: 0.8rem;
@@ -62,15 +66,19 @@
     outline: 2px solid rgba(232, 213, 179, 0.196);
 }
 
-.submitButton {
+.submitButton, .cancelButton, .uploadImageButton {
     margin: 1rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
     border: 0.5px solid var(--light-accent);
     color: var(--light-accent);
     border-radius: 15px;
     font-size: 1rem;
-    width: 40%;
     background-color: transparent;
+}
+
+.uploadImageButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
 }
 
 .loginHeading {

@@ -12,7 +12,6 @@ type Inputs = {
     password: string;
 };
 
-
 export default function Login() {
     const params = useSearchParams()!;
     const session = useSession();

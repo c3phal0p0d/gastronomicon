@@ -23,9 +23,11 @@ export default async function Home() {
                 <object type="image/svg+xml" data="/icon.svg" className={styles.icon} />
                 <h1 className={styles.heading}>Gastronomicon</h1>
             </div>
-            <SearchBar />
-            {/*<FilterBar/>
-            <Link href="">Add recipe</Link> */}
+            <div className={styles.searchFilterBar}>
+                <SearchBar />
+                {/* <FilterBar/> */}
+                <Link href="/recipe/upload" className={styles.addRecipeButton}>+</Link>
+            </div>
             <div className={styles.recipeGrid}>
                 <RecipeCard name='Vegan Tantanmen' image_uri='tantanmen.jpeg' />
                 <Link href="/recipe/656ec3a9ef98c1d61a5ef6a6">

@@ -13,7 +13,16 @@ export default function Home() {
             <div className={styles.left}>
                 <Image className={styles.image} src={"/recipe-photos/pita-chips.jpg"} alt='' width="300" height="300" />
                 <h2 className={styles.recipeHeading}>Pita chips</h2>
-                <div className={styles.ingredientsContainer}>
+                <div className={styles.recipeInfoContainer}>
+                    <div className={styles.preparationTimeInfo}>Preparation time: 0 h 10 min</div>
+                    <div className={styles.cookTimeInfo}>Cook time: 0 h 5 min</div>
+                    <div className={styles.servingsInfo}>Servings: 8</div>
+                    <div className={styles.recipeCategory}>Category: Snack</div>
+                    <div className={styles.originalRecipeLink} >Original recipe: <Link href="https://www.themediterraneandish.com/homemade-pita-chips/">https://www.themediterraneandish.com/homemade-pita-chips/</Link></div>
+                </div>
+            </div>
+            <div className={styles.right}>
+            <div className={styles.ingredientsContainer}>
                     <h3 className={styles.ingredientsHeading}>Ingredients</h3>
                     <ul className={styles.ingredients}>
                         <li>2 to 3 pita bread with pockets</li>
@@ -23,8 +32,6 @@ export default function Home() {
                         <li>Additional seasoning of choice</li>
                     </ul>
                 </div>
-            </div>
-            <div className={styles.right}>
                 <div className={styles.instructionsContainer}>
                     <h3 className={styles.instructionsHeading}>Instructions</h3>
                     <ol className={styles.instructions}>
@@ -35,7 +42,6 @@ export default function Home() {
                         <li>Bake! Arrange the pita triangles on the prepared sheet pan. Bake anywhere from 5 to 10 minutes, checking occasionally to turn over the pita triangles that have gained color, until you have pita chips that are crispy and golden brown to your liking. </li>
                     </ol>
                 </div>
-                <div className={styles.originalRecipeLink} >Original recipe: <Link href="https://www.themediterraneandish.com/homemade-pita-chips/">https://www.themediterraneandish.com/homemade-pita-chips/</Link></div>
             </div>
             </div>
         </main>

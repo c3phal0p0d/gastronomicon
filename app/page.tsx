@@ -14,6 +14,22 @@ export default async function Home() {
     if (!session) {
         redirect("/login");
     }
+
+    let recipesList;
+
+    try {
+        const res = await fetch(process.env.APP_URL + "/api/recipe/get-all-recipes", {
+            method: "GET",
+        });
+        recipesList = await res.json();
+        console.log("recipes list");
+        console.log(recipesList);
+        console.log(recipesList.recipesList);
+        console.log((JSON.parse(JSON.stringify(recipesList.recipesList))))
+    } catch (err: any) {
+        console.log(err);
+    }
+
     return (
         <main className={styles.main}>
             <button className={styles.logoutButton}>
@@ -29,13 +45,16 @@ export default async function Home() {
                 <Link href="/recipe/upload" className={styles.addRecipeButton}>+</Link>
             </div>
             <div className={styles.recipeGrid}>
-                <RecipeCard name='Vegan Tantanmen' image_uri='tantanmen.jpeg' />
+                {recipesList && JSON.parse(JSON.stringify(recipesList.recipesList)).map((recipe: { recipeName: string; imageURL: string; }) => (
+                    <RecipeCard name={recipe.recipeName} imageURL={recipe.imageURL}/>
+                ))}
+                {/* <RecipeCard name='Vegan Tantanmen' imageURL='tantanmen.jpeg' />
                 <Link href="/recipe/656ec3a9ef98c1d61a5ef6a6">
                     <RecipeCard name='Pita Chips' image_uri='pita-chips.jpg' />
                 </Link>
                 <RecipeCard name='Hummus' image_uri='hummus.jpg' />
                 <RecipeCard name='Lentil Soup' image_uri='lentil-soup.jpg' />
-                <RecipeCard name='Peanut Noodles' image_uri='peanut-noodles.jpg' />
+                <RecipeCard name='Peanut Noodles' image_uri='peanut-noodles.jpg' /> */}
             </div>
         </main>
 

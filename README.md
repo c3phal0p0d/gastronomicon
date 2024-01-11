@@ -1,3 +1,3 @@
 # Gastronomicon
 
-A web application for storing recipes
+Online recipe book application.

@@ -4,11 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {
     await dbConnect();
+    console.log("getting all recipes");
 
     try {
         const recipesList = await Recipe.find();
-        console.log("recipes list:");
-        console.log(recipesList);
         return NextResponse.json({ recipesList });
     } catch (err: any) {
         console.log(err);

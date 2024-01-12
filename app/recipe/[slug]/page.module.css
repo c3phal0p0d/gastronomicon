@@ -28,6 +28,7 @@
 .ingredients, .instructions {
     color: var(--light-accent);
     font-weight: 200;
+    white-space: pre-line;
 }
 
 .instructions > li {
@@ -46,6 +47,7 @@
     margin: 1rem;
     padding: 1.2rem;
     background-color: var(--dark-accent);
+    
 }
 
 .right {

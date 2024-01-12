@@ -4,6 +4,7 @@ import styles from './page.module.css';
 import RecipeCard from './components/RecipeCard';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
+import Recipe from "@/app/models/Recipe";
 
 import { authOptions } from "./utils/auth";
 import { getServerSession } from "next-auth";
@@ -15,20 +16,18 @@ export default async function Home() {
         redirect("/login");
     }
 
-    let recipesList;
+    // let recipesList;
 
-    try {
-        const res = await fetch(process.env.APP_URL + "/api/recipe/get-all-recipes", {
-            method: "GET",
-        });
-        recipesList = await res.json();
-        console.log("recipes list");
-        console.log(recipesList);
-        console.log(recipesList.recipesList);
-        console.log((JSON.parse(JSON.stringify(recipesList.recipesList))))
-    } catch (err: any) {
-        console.log(err);
-    }
+    // try {
+    //     const res = await fetch(process.env.APP_URL + "/api/recipe/get-all", {
+    //         method: "GET",
+    //     });
+    //     recipesList = await res.json();
+    // } catch (err: any) {
+    //     console.log(err);
+    // }
+
+    const recipesList = await Recipe.find();
 
     return (
         <main className={styles.main}>
@@ -45,8 +44,8 @@ export default async function Home() {
                 <Link href="/recipe/upload" className={styles.addRecipeButton}>+</Link>
             </div>
             <div className={styles.recipeGrid}>
-                {recipesList && JSON.parse(JSON.stringify(recipesList.recipesList)).map((recipe: { recipeName: string; imageURL: string; }) => (
-                    <RecipeCard name={recipe.recipeName} imageURL={recipe.imageURL}/>
+                {recipesList && recipesList.map((recipe: { _id: string, recipeName: string; imageURL: string; }) => (
+                    <RecipeCard _id={recipe._id} name={recipe.recipeName} imageURL={recipe.imageURL}/>
                 ))}
                 {/* <RecipeCard name='Vegan Tantanmen' imageURL='tantanmen.jpeg' />
                 <Link href="/recipe/656ec3a9ef98c1d61a5ef6a6">

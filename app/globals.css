@@ -13,7 +13,8 @@
     --text-color: rgb(203, 173, 118);
     --dark-accent: rgb(19, 21, 29);
     --light-accent: rgb(224, 199, 152);
-    --text-color-light: rgb(214, 207, 193);
+    --text-color-light: rgb(218, 209, 189);
+    /* --text-color-light: rgb(202, 204, 210); */
 
     --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',

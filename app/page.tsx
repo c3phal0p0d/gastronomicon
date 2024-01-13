@@ -5,6 +5,7 @@ import RecipeCard from './components/RecipeCard';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
 import Recipe from "@/app/models/Recipe";
+import LogoutButton from "@/app/components/LogoutButton";
 
 import { authOptions } from "./utils/auth";
 import { getServerSession } from "next-auth";
@@ -31,9 +32,7 @@ export default async function Home() {
 
     return (
         <main className={styles.main}>
-            <button className={styles.logoutButton}>
-                <object type="image/svg+xml" data="/logout.svg" className={styles.icon} />
-            </button>
+            <LogoutButton/>
             <div className={styles.headingContainer}>
                 <object type="image/svg+xml" data="/icon.svg" className={styles.icon} />
                 <h1 className={styles.heading}>Gastronomicon</h1>

@@ -4,6 +4,7 @@ import styles from './page.module.css'
 import useSWR from 'swr'
 import dbConnect from '@/app/utils/dbConnect'
 import Recipe from "@/app/models/Recipe";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode, Key } from 'react'
 
 const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then((res) => res.json())
 
@@ -41,6 +42,8 @@ export default async function RecipePage({ params }: { params: { slug: string } 
         recipe = await Recipe.findById(id);
         console.log("try recipe: ");
         console.log(recipe);
+
+        console.log(recipe.sourceURL);
     } catch (err: any) {
         console.log(err);
     }
@@ -48,24 +51,25 @@ export default async function RecipePage({ params }: { params: { slug: string } 
     return (
         <main className={styles.main}>
             <div className={styles.recipesLink}>
-                {/* <object type="image/svg+xml" data="/icon4.svg" className={styles.icon} /> */}
                 <Link href="/">← Back to recipes</Link>
             </div>
             <div className={styles.recipeContainer}>
-                <div className={styles.left}>
+                <div className={styles.top}>
                     <Image className={styles.image} src={recipe.imageURL} alt='' width="300" height="300" />
                     <div className={styles.recipeInfoContainer}>
-                    <h2 className={styles.recipeHeading}>{recipe.recipeName}</h2>
+                        <h2 className={styles.recipeHeading}>{recipe.recipeName}</h2>
                         <div className={styles.preparationTimeInfo}>Preparation time: {recipe.preparationTime}</div>
                         <div className={styles.servingsInfo}>Servings: {recipe.servings}</div>
                         <div className={styles.recipeCategory}>Category: {recipe.category}</div>
-                        <div className={styles.originalRecipeLink} >Original recipe: <Link href={""}>{recipe.sourceURL}</Link></div>
+                        <div className={styles.originalRecipeLink} >Link to original recipe: 
+                            {recipe.sourceURL != "" ? <Link href={recipe.sourceURL}> {recipe.sourceURL}</Link> : " N/A"}
+                        </div>
                     </div>
                 </div>
-                <div className={styles.right}>
+                <div className={styles.bottom}>
                     <div className={styles.ingredientsContainer}>
                         <h3 className={styles.ingredientsHeading}>Ingredients</h3>
-                        {recipe.ingredients}
+                        {recipe.ingredients.split("\n").map(function (ingredient: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined, i: Key | null | undefined) { return <span key={i}>{ingredient}<br/></span> })}
                         {/* <ul className={styles.ingredients}>
                         <li>2 to 3 pita bread with pockets</li>
                         <li>Olive oil</li>
@@ -76,7 +80,7 @@ export default async function RecipePage({ params }: { params: { slug: string } 
                     </div>
                     <div className={styles.instructionsContainer}>
                         <h3 className={styles.instructionsHeading}>Instructions</h3>
-                        {recipe.instructions}
+                        {recipe.instructions.split("\n").map(function (instruction: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined, i: Key | null | undefined) { return <span key={i}>{instruction}<br/></span> })}
                         {/* <ol className={styles.instructions}>
                         <li>Heat the oven to 425 degrees F. And prepare a large sheet pan.</li>
                         <li>Split the pita pockets in half to make single rounds of pita. Place each pita flat on your cutting board and split them in half from the seam with a sharp knife or kitchen shears (you should end up with 2 single rounds of pita). Note: If your pitas are the thick, single-layer kind, you can skip this step as you can't split them. </li>

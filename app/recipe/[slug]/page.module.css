@@ -7,7 +7,7 @@
 
 .recipeContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     /* background-color: var(--dark-accent); */
 }
 
@@ -19,13 +19,37 @@
     margin: 1rem 0;
 }
 
+.recipeInfoContainer {
+    margin: 2rem;
+    margin-top: 0;
+    line-height: 1.75rem;
+    font-weight: 300;
+}
+
 .ingredientsHeading, .instructionsHeading {
     font-size: 1.5rem;
     font-family: var(--font-heading);
     margin: 1rem 0;
+    color: var(--text-color);
 }
 
-.ingredients, .instructions {
+.ingredientsContainer {
+    width: 500px;
+    margin: 0rem 1.5rem;
+    line-height: 1.5rem;
+    color: var(--text-color-light);
+    font-weight: 300;
+}
+
+.instructionsContainer {
+    margin: 0rem 1.5rem;
+    line-height: 1.5rem;
+    color: var(--text-color-light);
+    font-weight: 300;
+    width: 700px;
+}
+
+/* .ingredients, .instructions {
     font-weight: 200;
     white-space: pre-line;
 }
@@ -36,25 +60,29 @@
 
 .ingredients > li {
     margin: 0.3rem 1rem;
-}
+} */
 
-.icon {
-    width: 75px;
-}
-
-.left {
+.top {
     margin: 1rem;
+    margin-bottom: 0;
     padding: 1.2rem;
     background-color: var(--dark-accent);
-    
+    display: flex;
+    flex-direction: row;
 }
 
-.right {
-    margin: 0rem 1rem;
+.bottom {
+    margin-top: 0;
     padding: 1rem;
+    display: flex;
+    flex-direction: row;
 }
 
-.originalRecipeLink > Link {
+.originalRecipeLink Link {
     font-style: italic;
-    font-weight: 200;
+}
+
+.image {
+    width: 250px;
+    height: 250px;
 }

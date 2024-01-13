@@ -3,13 +3,15 @@ import dbConnect from "../../../utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {
-    const { recipeName, addedBy, imageURL, preparationTime, servings, category, ingredients, instructions, sourceURL } = await request.json();
+    const { recipeName, imageURL, preparationTime, servings, category, ingredients, instructions, sourceURL, addedBy } = await request.json();
 
     await dbConnect();
 
+    console.log(recipeName);
+    console.log(addedBy);
+
     const newRecipe = new Recipe({
         recipeName, 
-        addedBy,
         imageURL, 
         preparationTime, 
         servings, 
@@ -17,6 +19,7 @@ export const POST = async (request: NextRequest) => {
         ingredients, 
         instructions, 
         sourceURL,
+        addedBy,
     });
 
     try {

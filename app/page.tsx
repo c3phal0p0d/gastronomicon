@@ -12,14 +12,14 @@ import { redirect } from "next/navigation";
 
 export default async function Home() {
     const session = await getServerSession(authOptions);
-    if (!session) {
+    if (!session || !session.user) {
         redirect("/login");
     }
 
     let recipesList;
 
     try {
-        const res = await fetch(process.env.APP_URL + "/api/recipe/get-all", {
+        const res = await fetch(process.env.APP_URL + "/api/recipe/get-all?email=" + session.user.email, {
             method: "GET",
         });
         recipesList = await res.json();
@@ -50,13 +50,6 @@ export default async function Home() {
                 {recipesList && JSON.parse(JSON.stringify(recipesList.recipesList)).map((recipe: { _id: string, recipeName: string; imageURL: string; }) => (
                     <RecipeCard _id={recipe._id} name={recipe.recipeName} imageURL={recipe.imageURL}/>
                 ))}
-                {/* <RecipeCard name='Vegan Tantanmen' imageURL='tantanmen.jpeg' />
-                <Link href="/recipe/656ec3a9ef98c1d61a5ef6a6">
-                    <RecipeCard name='Pita Chips' image_uri='pita-chips.jpg' />
-                </Link>
-                <RecipeCard name='Hummus' image_uri='hummus.jpg' />
-                <RecipeCard name='Lentil Soup' image_uri='lentil-soup.jpg' />
-                <RecipeCard name='Peanut Noodles' image_uri='peanut-noodles.jpg' /> */}
             </div>
         </main>
 

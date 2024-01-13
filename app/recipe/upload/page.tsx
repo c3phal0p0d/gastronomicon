@@ -5,9 +5,12 @@ import styles from './page.module.css';
 import ImageUploadForm from './components/ImageUploadForm';
 import { useEffect, useState, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { signIn, useSession } from "next-auth/react";
+import { authOptions } from "@/app/utils/auth";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Link from 'next/link';
+import { getSession, useSession } from 'next-auth/react';
 
 type Inputs = {
     recipeName: string,
@@ -18,6 +21,7 @@ type Inputs = {
     ingredients: string,
     instructions: string,
     sourceURL: string,
+    addedBy: string | null
 };
 
 export default function RecipeUpload() {
@@ -25,8 +29,20 @@ export default function RecipeUpload() {
     const [blob, setBlob] = useState<PutBlobResult | null>(null);
 
     const params = useSearchParams()!;
-    const session = useSession();
     const router = useRouter();
+
+    // const session = await getSession(authOptions);
+    // if (!session || !session.user) {
+    //     redirect("/login");
+    // }
+
+    const { data: session, status } = useSession()
+
+  if (!(status === "authenticated" || session) || !session.user) {
+    redirect("/login");
+  }
+
+  console.log(session.user);
 
     const {
         register,
@@ -42,6 +58,7 @@ export default function RecipeUpload() {
             ingredients: "",
             instructions: "",
             sourceURL: "",
+            addedBy: "",
         },
     });
 
@@ -112,8 +129,12 @@ export default function RecipeUpload() {
         else {
             imageURL = "";
         }
+        
+        let addedBy;
 
-        const addedBy = "";
+        if (session.user){
+            addedBy = session.user.email;
+        }
 
         try {
             const res = await fetch("/api/recipe/upload", {

@@ -8,9 +8,6 @@ const RecipeSchema = new mongoose.Schema(
             required: true,
             unique: true,
         },
-        addedby: {
-            type: ObjectId,
-        },
         imageURL: {
             type: String,
         },
@@ -35,6 +32,9 @@ const RecipeSchema = new mongoose.Schema(
         },
         sourceURL: {
             type: String,
+        },
+        addedby: {
+            type: ObjectId,
         },
     },
     { timestamps: true },

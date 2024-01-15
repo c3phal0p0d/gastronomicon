@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import { NextAuthProvider } from "./Provider";
 import './globals.css'
 
+import Footer from "./footer";
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -20,6 +22,7 @@ export default function RootLayout({
             <body className={inter.className}>
                 <NextAuthProvider>
                     {children}
+                    <Footer />
                 </NextAuthProvider>
             </body>
         </html>

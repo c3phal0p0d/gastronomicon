@@ -1,0 +1,17 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(19, 21, 29, 0.5);
+    padding: 1rem;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    margin-top: 25vh;
+    text-transform: uppercase;
+}
+
+.githubIcon {
+    width: 30px;
+    height: 30px;
+}

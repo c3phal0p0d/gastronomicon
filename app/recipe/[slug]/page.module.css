@@ -48,7 +48,7 @@
 }
 
 .ingredientsContainer {
-    width: 500px;
+    width: 20rem;
     margin: 0rem 1.5rem;
     line-height: 1.5rem;
     color: var(--text-color-light);
@@ -60,7 +60,7 @@
     line-height: 1.5rem;
     color: var(--text-color-light);
     font-weight: 300;
-    width: 700px;
+    width: 50rem;
 }
 
 /* .ingredients, .instructions {

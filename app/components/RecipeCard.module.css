@@ -25,22 +25,24 @@
 }
 
 .defaultImageContainer {
-    width: 250px;
-    height: 250px;
+    width: 226px;
+    height: 226px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 15px;
+    margin: 27px;
     background-color: var(--dark-accent);
 }
 
 .image {
     width: 90%;
+    height: 90%;
     margin: 0 auto;
 }
 
 .defaultImage {
     margin: 0 auto;
     width: 60%;
+    height: 60%;
     /* border: 3px solid var(--text-color); */
 }

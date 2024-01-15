@@ -34,7 +34,8 @@ const RecipeSchema = new mongoose.Schema(
             type: String,
         },
         addedby: {
-            type: ObjectId,
+            type: String,
+            required: true,
         },
     },
     { timestamps: true },

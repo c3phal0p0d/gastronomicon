@@ -15,7 +15,9 @@ const RecipeCard = ({ _id, name, imageURL }: RecipeCardProps) => {
     return (
         <div className={styles.recipeCard}>
             <Link href={`/recipe/${_id}`}>
-                <Image className={styles.image} src={imageURL} alt='' width="1000" height="250" />
+                <div className={imageURL == "" ? styles.defaultImageContainer : styles.imageContainer}>
+                    <Image className={imageURL == "" ? styles.defaultImage : styles.image} src={imageURL == "" ? "/icons/default-image.svg" : imageURL} alt='' width="1000" height="250" />
+                </div>
                 <h3 className={styles.name}>{name}</h3>
             </Link>
         </div>

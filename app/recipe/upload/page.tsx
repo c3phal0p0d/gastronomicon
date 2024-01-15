@@ -36,13 +36,13 @@ export default function RecipeUpload() {
     //     redirect("/login");
     // }
 
-    const { data: session, status } = useSession()
+    // const { data: session, status } = useSession()
 
-  if (!(status === "authenticated" || session) || !session.user) {
-    redirect("/login");
-  }
+    // if (!(status === "authenticated" || session) || !session.user) {
+    //     redirect("/login");
+    // }
 
-  console.log(session.user);
+    // console.log(session.user);
 
     const {
         register,
@@ -123,18 +123,18 @@ export default function RecipeUpload() {
         const { recipeName, preparationTime, servings, category, ingredients, instructions, sourceURL } = form;
 
         let imageURL;
-        if (blob){
+        if (blob) {
             imageURL = blob.url;
         }
         else {
             imageURL = "";
         }
-        
-        let addedBy;
 
-        if (session.user){
-            addedBy = session.user.email;
-        }
+        let addedBy = "test@example.com";
+
+        // if (session.user){
+        //     addedBy = session.user.email;
+        // }
 
         try {
             const res = await fetch("/api/recipe/upload", {
@@ -144,7 +144,6 @@ export default function RecipeUpload() {
                 },
                 body: JSON.stringify({
                     recipeName,
-                    addedBy,
                     imageURL,
                     preparationTime,
                     servings,
@@ -152,6 +151,7 @@ export default function RecipeUpload() {
                     ingredients,
                     instructions,
                     sourceURL,
+                    addedBy,
                 }),
             });
             res.status === 201 &&

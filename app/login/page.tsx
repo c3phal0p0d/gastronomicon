@@ -49,7 +49,7 @@ export default function Login() {
     return (
         <main className={styles.main}>
             <div className={styles.headingContainer}>
-                <object type="image/svg+xml" data="/icon.svg" className={styles.icon} />
+                <object type="image/svg+xml" data="/icons/app-icon.svg" className={styles.icon} />
                 <h1 className={styles.heading}>Gastronomicon</h1>
             </div>
             <div className={styles.loginContainer}>

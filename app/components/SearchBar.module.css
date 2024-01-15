@@ -1,6 +1,7 @@
 .search {
     margin: 10px;
-    padding: 15px 100px;
+    padding: 15px;
+    padding-right: 150px;
     color: var(--light-accent);
     background-color: var(--dark-accent);
     font-size: 0.9rem;
@@ -8,13 +9,21 @@
     border-radius: 15px;
     text-align: left;
     align-items: left;
+    outline: none;
+    border: none;
+    height: 3rem;
 }
 
-.searchContainer {
+.searchForm {
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+.searchForm:focus-visible {
+    outline: 2px solid rgba(232, 213, 179, 0.196);
 }
 
 .icon {
-    width: 20px;
+    width: 17px;
 }

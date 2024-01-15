@@ -2,8 +2,9 @@
     width: 15rem;
     color: var(--light-accent);
     border-radius: var(--border-radius);
-    padding: 0.7rem 0.2rem;
-    /* background-color: var(--dark-accent); */
+    /* padding: 0.2rem 0.5rem;
+    margin: 10px;
+    background-color: var(--dark-accent); */
 
 }
 
@@ -14,8 +15,32 @@
     font-family: var(--font-heading);
 }
 
+.imageContainer {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+.defaultImageContainer {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    background-color: var(--dark-accent);
+}
+
 .image {
     width: 90%;
     margin: 0 auto;
-    margin: 15px;
+}
+
+.defaultImage {
+    margin: 0 auto;
+    width: 60%;
+    /* border: 3px solid var(--text-color); */
 }

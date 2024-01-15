@@ -3,11 +3,9 @@ import styles from './SearchBar.module.css';
 
 export default function SearchBar() {
     return (
-        <div className={styles.searchContainer}>
-            <object type="image/svg+xml" data="/search.svg" className={styles.icon} />
-            <div className={styles.search}>
-                search your recipes...
-            </div>
-        </div>
+        <form className={styles.searchForm}>
+            <object type="image/svg+xml" data="/icons/search.svg" className={styles.icon} />
+            <input className={styles.search} type="text" placeholder="search your recipes..." />
+        </form>
     );
 }

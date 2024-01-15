@@ -34,13 +34,13 @@ export default async function Home() {
         <main className={styles.main}>
             <LogoutButton/>
             <div className={styles.headingContainer}>
-                <object type="image/svg+xml" data="/icon.svg" className={styles.icon} />
+                <object type="image/svg+xml" data="/icons/app-icon.svg" className={styles.icon} />
                 <h1 className={styles.heading}>Gastronomicon</h1>
             </div>
             <div className={styles.searchFilterBar}>
                 <SearchBar />
                 {/* <FilterBar/> */}
-                <Link href="/recipe/upload" className={styles.addRecipeButton}>+</Link>
+                <Link href="/recipe/upload" className={styles.addRecipeButton}>+ Add recipe</Link>
             </div>
             <div className={styles.recipeGrid}>
                 {/* {recipesList && recipesList.map((recipe: { _id: string, recipeName: string; imageURL: string; }) => (

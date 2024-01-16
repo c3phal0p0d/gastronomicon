@@ -36,14 +36,15 @@ export const authOptions: NextAuthOptions = {
                     if (user) {
                         console.log(user);
                         console.log(credentials.password)
-                        // const isMatch = await bcrypt.compare(
-                        //     credentials.password,
-                        //     user.password,
-                        // );
-                        // if (isMatch) {
-                        //     return user;
-                        if (credentials.password == user.password){
+                        const isMatch = await bcrypt.compare(
+                            credentials.password,
+                            user.password,
+                        );
+                        if (isMatch) {
                             return user;
+                        // if (credentials.password == user.password){
+                        //     return user;
+                        // } 
                         } else {
                             throw new Error("Email or password is incorrect");
                         }

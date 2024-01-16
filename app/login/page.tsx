@@ -72,6 +72,7 @@ export default function Login() {
                             required: "Password is required",
                         })}
                     />
+                    <div className={styles.signUpRedirectContainer}>Don't have an account yet? <Link href="/sign-up" className={styles.redirectLink}>Sign up</Link></div>
                     <button className={styles.loginButton} type="submit">Log in</button>
                 </form>
             </div>

@@ -44,6 +44,7 @@
     padding: 0.7rem;
     width: 100%;
     margin-bottom: 0.5rem;
+    border-radius: 5px;
 }
 
 .formField:focus-visible {
@@ -68,4 +69,20 @@
 
 .icon {
     width: 150px;
+}
+
+.signUpRedirectContainer {
+    color: rgba(203, 173, 118, 0.803);
+    margin: 1rem;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    font-size: 0.9rem;
+}
+
+.redirectLink {
+    color: rgb(203, 173, 118);
+}
+
+.redirectLink:hover {
+    text-decoration: underline;
 }

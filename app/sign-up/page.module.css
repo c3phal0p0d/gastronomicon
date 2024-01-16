@@ -6,21 +6,22 @@
     min-height: 100vh;
 }
 
-.imageUploadContainer {
+.headingContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.5rem;
+    margin: 10px;
 }
 
 .heading {
+    text-transform: uppercase;
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 2rem;
-    margin: 1rem 0;
+    font-size: 3.5rem;
+    margin-top: -20px;
 }
 
-.loginContainer {
+.signUpContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,11 +29,12 @@
     margin-top: 5vh;
 }
 
-.addRecipeForm {
+.signUpForm {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70%;
+    width: 40%;
+    margin: 5vh;
 }
 
 .formField {
@@ -49,40 +51,38 @@
     outline: 2px solid rgba(232, 213, 179, 0.196);
 }
 
-.formTextArea {
-    background-color: var(--dark-accent);
-    color: var(--light-accent);
-    border: none;
-    padding: 0.7rem;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    height: 20vh;
-    margin-bottom: 0.5rem;
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-}
-
-.formTextArea:focus-visible {
-    outline: 2px solid rgba(232, 213, 179, 0.196);
-}
-
-.submitButton, .cancelButton, .uploadImageButton {
+.signUpButton {
     margin: 1rem;
-    padding: 1rem 2rem;
+    padding: 1rem;
     border: 0.5px solid var(--light-accent);
     color: var(--light-accent);
     border-radius: 15px;
     font-size: 1rem;
+    width: 30%;
     background-color: transparent;
 }
 
-.uploadImageButton {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.75rem;
-}
-
-.loginHeading {
+.signUpHeading {
     font: var(--font-heading);
     font-size: 1.5rem;
+}
+
+.icon {
+    width: 150px;
+}
+
+.loginRedirectContainer {
+    color: rgba(203, 173, 118, 0.803);
+    margin: 1rem;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    font-size: 0.9rem;
+}
+
+.redirectLink {
+    color: rgb(203, 173, 118);
+}
+
+.redirectLink:hover {
+    text-decoration: underline;
 }

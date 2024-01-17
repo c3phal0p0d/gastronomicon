@@ -193,7 +193,7 @@ export default function RecipeUpload() {
                 </form>
                 {blob && (
                     <div>
-                        Blob url: <a href={blob.url}>{blob.url}</a>
+                        Image uploaded successfully!
                     </div>
                 )}
             </div>

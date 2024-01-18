@@ -17,6 +17,8 @@ export default async function Home() {
         redirect("/login");
     }
 
+    console.log("dashboard, user logged in: ", session.user.email);
+
     let recipesList;
 
     try {

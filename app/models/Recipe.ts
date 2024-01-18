@@ -6,7 +6,6 @@ const RecipeSchema = new mongoose.Schema(
         recipeName: {
             type: String,
             required: true,
-            unique: true,
         },
         imageURL: {
             type: String,
@@ -33,7 +32,7 @@ const RecipeSchema = new mongoose.Schema(
         sourceURL: {
             type: String,
         },
-        addedby: {
+        addedBy: {
             type: String,
             required: true,
         },

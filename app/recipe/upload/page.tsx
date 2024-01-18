@@ -36,13 +36,7 @@ export default function RecipeUpload() {
     //     redirect("/login");
     // }
 
-    // const { data: session, status } = useSession()
-
-    // if (!(status === "authenticated" || session) || !session.user) {
-    //     redirect("/login");
-    // }
-
-    // console.log(session.user);
+    const { data: session, status } = useSession()
 
     const {
         register,
@@ -130,11 +124,13 @@ export default function RecipeUpload() {
             imageURL = "";
         }
 
-        let addedBy = "test@example.com";
+        let addedBy = "";
 
-        // if (session.user){
-        //     addedBy = session.user.email;
-        // }
+        if (session?.user?.email){
+            addedBy = session.user.email;
+        }
+
+        // console.log("added by: ", addedBy);
 
         try {
             const res = await fetch("/api/recipe/upload", {

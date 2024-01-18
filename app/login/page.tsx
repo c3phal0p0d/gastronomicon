@@ -32,9 +32,11 @@ export default function Login() {
 
     useEffect(() => {
         setError(params.get("error"));
-      }, [params]);
+    }, [params]);
+
 
     if (session.status === "authenticated") {
+        console.log("login, user already logged in: ", session.data.user?.email);
         router?.push("/");
     }
 
@@ -55,16 +57,16 @@ export default function Login() {
             <div className={styles.loginContainer}>
                 <h2 className={styles.loginHeading}>Log in to your account</h2>
                 <form className={styles.loginForm} onSubmit={handleSubmit(formSubmit)}>
-                    <input 
-                        className={styles.formField} 
-                        type="email" 
-                        placeholder="Email" 
+                    <input
+                        className={styles.formField}
+                        type="email"
+                        placeholder="Email"
                         {...register("email", {
                             required: "Email is required",
                             pattern: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                         })}
                     />
-                    <input 
+                    <input
                         className={styles.formField}
                         type="password"
                         placeholder="Password"

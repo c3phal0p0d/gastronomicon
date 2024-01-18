@@ -7,9 +7,6 @@ export const POST = async (request: NextRequest) => {
 
     await dbConnect();
 
-    console.log(recipeName);
-    console.log(addedBy);
-
     const newRecipe = new Recipe({
         recipeName, 
         imageURL, 
@@ -23,6 +20,10 @@ export const POST = async (request: NextRequest) => {
     });
 
     try {
+        console.log("new recipe:");
+        console.log(newRecipe);
+        console.log(addedBy);
+        
         await newRecipe.save();
         return new NextResponse("Recipe has been added", {
             status: 201,

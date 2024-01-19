@@ -11,7 +11,7 @@ export const GET = async (request: NextRequest) => {
 
 
     try {
-        const recipesList = await Recipe.find({addedBy: userEmail});
+        let recipesList = await Recipe.find({addedBy: userEmail}).sort('-createdAt').exec();
         return NextResponse.json({ recipesList });
     } catch (err: any) {
         console.log(err);

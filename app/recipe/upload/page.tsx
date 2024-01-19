@@ -25,8 +25,9 @@ type Inputs = {
 };
 
 export default function RecipeUpload() {
-    const inputFileRef = useRef<HTMLInputElement>(null);
-    const [blob, setBlob] = useState<PutBlobResult | null>(null);
+    const [file, setFile] = useState<File | null>(null);
+    const [uploading, setUploading] = useState(false);
+    const [imageURL, setImageURL] = useState("");
 
     const params = useSearchParams()!;
     const router = useRouter();
@@ -56,81 +57,18 @@ export default function RecipeUpload() {
         },
     });
 
-    // const [formData, setFormData] = useState({
-    //     recipeName: "",
-    //     sourceURL: "",
-    //     ingredients: "",
-    //     instructions: "",
-    // });
-
-    // const [formSuccess, setFormSuccess] = useState(false);
-    // const [formSuccessMessage, setFormSuccessMessage] = useState("");
-
-    // const handleInput = (e: React.ChangeEvent<any>) => {
-    //     const fieldName = e.target.name;
-    //     const fieldValue = e.target.value;
-
-    //     setFormData((prevState) => ({
-    //         ...prevState,
-    //         [fieldName]: fieldValue
-    //     }));
-    // }
-
-    // const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     console.log(formData);
-
-    //     const formURL = "";
-    //     const data = new FormData();
-
-    //     Object.entries(formData).forEach(([key, value]) => {
-    //         data.append(key, value);
-    //     });
-
-    //     if (blob) {
-    //         data.append("imageURL", blob.url);
-    //     } else data.append("imageURL", "");
-
-    //     fetch(formURL, {
-    //         method: "POST",
-    //         body: data,
-    //         headers: {
-    //             'accept': 'application/json',
-    //         },
-    //     }).then((response) => response.json())
-    //         .then((data) => {
-    //             setFormData({
-    //                 recipeName: "",
-    //                 sourceURL: "",
-    //                 ingredients: "",
-    //                 instructions: "",
-    //             });
-
-    //             setFormSuccess(true);
-    //             setFormSuccessMessage(data.submission_text);
-    //         })
-    // }
-
     const [message, setMessage] = useState<null | string>(null);
 
     const formSubmit: SubmitHandler<Inputs> = async (form) => {
         const { recipeName, preparationTime, servings, category, ingredients, instructions, sourceURL } = form;
 
-        let imageURL;
-        if (blob) {
-            imageURL = blob.url;
-        }
-        else {
-            imageURL = "";
-        }
-
         let addedBy = "";
 
-        if (session?.user?.email){
+        if (session?.user?.email) {
             addedBy = session.user.email;
         }
 
-        // console.log("added by: ", addedBy);
+        console.log("image URL: ", imageURL);
 
         try {
             const res = await fetch("/api/recipe/upload", {
@@ -165,33 +103,76 @@ export default function RecipeUpload() {
                     onSubmit={async (event) => {
                         event.preventDefault();
 
-                        if (!inputFileRef.current?.files) {
-                            throw new Error('No file selected');
-                        }
+                        setUploading(true);
 
-                        const file = inputFileRef.current.files[0];
+                        console.log("app url: ", process.env.APP_URL);
 
                         const response = await fetch(
-                            `/api/recipe/upload/image?filename=${file.name}`,
+                            '/api/recipe/upload/image',
                             {
                                 method: 'POST',
-                                body: file,
-                            },
-                        );
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ filename: file?.name, contentType: file?.type }),
+                            }
+                        )
 
-                        const newBlob = (await response.json()) as PutBlobResult;
+                        if (response.ok) {
+                            const { url, fields, key } = await response.json();
 
-                        setBlob(newBlob);
+                            console.log(url);
+                            console.log(fields);
+                            console.log(key);
+
+                            const formData = new FormData();
+                            Object.entries(fields).forEach(([key, value]) => {
+                                formData.append(key, value as string)
+                            });
+                            if (file) {
+                                formData.append('file', file);
+                            };
+
+                            console.log(formData);
+
+                            const uploadResponse = await fetch(url, {
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                    "Access-Control-Allow-Origin": "*",
+                                    "Access-Control-Allow-Headers": "*"
+                                },
+                            })
+
+                            console.log(uploadResponse);
+
+                            if (uploadResponse.ok) {
+                                setImageURL("https://gastronomicon.s3.amazonaws.com/" + key);
+                                alert('Upload successful!');
+                            } else {
+                                console.error('S3 Upload Error:', uploadResponse)
+                                alert('Upload failed.')
+                            }
+                        } else {
+                            alert('Failed to get pre-signed URL.')
+                        }
+
+                        setUploading(false);
+
                     }}
                 >
-                    <input name="file" ref={inputFileRef} type="file" required />
-                    <button type="submit" className={styles.uploadImageButton}>Upload</button>
+                    <input id="file"
+                        type="file"
+                        onChange={(e) => {
+                            const files = e.target.files
+                            if (files) {
+                                setFile(files[0])
+                            }
+                        }}
+                        accept="image/png, image/jpeg"
+                    />
+                    <button type="submit" className={styles.uploadImageButton} disabled={uploading}>Upload</button>
                 </form>
-                {blob && (
-                    <div>
-                        Image uploaded successfully!
-                    </div>
-                )}
             </div>
             <form className={styles.addRecipeForm} onSubmit={handleSubmit(formSubmit)}>
                 <input

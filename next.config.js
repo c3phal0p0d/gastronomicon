@@ -7,6 +7,7 @@ module.exports = {
         ignoreDuringBuilds: true,
     },
     images: {
-        remotePatterns: [{ hostname: "*.public.blob.vercel-storage.com" }],
+        remotePatterns: [{ hostname: "gastronomicon.s3.amazonaws.com" }],
     },
+    crossOrigin: 'anonymous'
 }

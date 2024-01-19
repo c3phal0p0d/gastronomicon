@@ -6,44 +6,14 @@ import dbConnect from '@/app/utils/dbConnect'
 import Recipe from "@/app/models/Recipe";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode, Key } from 'react'
 
-const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then((res) => res.json())
-
 export default async function RecipePage({ params }: { params: { slug: string } }) {
-
-    // const { data, error } = useSWR("/api/recipe/get?id=" + params.slug, fetcher);
-    // const recipe = data;
-
     let recipe;
     console.log("slug" + params.slug);
 
     try {
-        // console.log(process.env.APP_URL + "/api/recipe/get?id=" + params.slug);
-        // const res = await fetch(process.env.APP_URL + "/api/recipe/get?id=" + params.slug, {
-        //     method: "GET",
-        // });
-        // console.log(res.status);
-        // if (!res.ok) {
-        //     throw new Error(`Failed to fetch data. Status: ${res.status}`);
-        // }
-        // const responseText = await res.text();
-        // recipe = JSON.parse(responseText);
-        // console.log("responseText:");
-        // console.log(responseText);
-        // console.log(res);
-        // console.log("recipe:")
-        // console.log(recipe);
-        // // recipe = await res.json();
-        // // console.log("recipe:");
-        // // console.log(recipe);
-
-
         await dbConnect();
         const id = params.slug;
         recipe = await Recipe.findById(id);
-        console.log("try recipe: ");
-        console.log(recipe);
-
-        console.log(recipe.sourceURL);
 
     } catch (err: any) {
         console.log(err);

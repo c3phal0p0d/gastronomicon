@@ -4,8 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {
     await dbConnect();
-    console.log("getting all recipes");
-
     const { searchParams } = new URL(request.url);
     const userEmail = searchParams.get('email');
 

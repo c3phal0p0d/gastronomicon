@@ -11,7 +11,6 @@ type RecipeCardProps = {
 }
 
 const RecipeCard = ({ _id, name, imageURL }: RecipeCardProps) => {
-    console.log("id: " + _id);
     return (
         <div className={styles.recipeCard}>
             <Link href={`/recipe/${_id}`}>

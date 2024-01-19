@@ -20,10 +20,6 @@ export const POST = async (request: NextRequest) => {
     });
 
     try {
-        console.log("new recipe:");
-        console.log(newRecipe);
-        console.log(addedBy);
-        
         await newRecipe.save();
         return new NextResponse("Recipe has been added", {
             status: 201,

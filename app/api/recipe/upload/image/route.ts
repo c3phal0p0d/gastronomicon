@@ -6,23 +6,9 @@ import { S3Client } from '@aws-sdk/client-s3'
 import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(request: Request) {
-    //   const { searchParams } = new URL(request.url);
-    //   const filename = searchParams.get('filename') || '';
-
-    //   if (request.body!=null){
-    //     const blob = await put(filename, request.body, {
-    //         access: 'public',
-    //       });
-
-    //       return NextResponse.json(blob);
-    //     }
-
-    //     return NextResponse.json({});
-
     const { filename, contentType } = await request.json();
 
     const bucketName = process.env.AWS_BUCKET_NAME || "";
-    console.log("bucketName: ", bucketName);
 
     try {
         const client = new S3Client({ region: process.env.AWS_REGION });
@@ -41,8 +27,6 @@ export async function POST(request: Request) {
             },
             Expires: 600, // Seconds before the presigned post expires. 3600 by default.
         })
-        console.log("presigned url:", url);
-        console.log("key: ", key);
         return Response.json({ url, fields, key })
     } catch (error) {
         return Response.json({})

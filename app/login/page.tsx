@@ -36,7 +36,6 @@ export default function Login() {
 
 
     if (session.status === "authenticated") {
-        console.log("login, user already logged in: ", session.data.user?.email);
         router?.push("/");
     }
 

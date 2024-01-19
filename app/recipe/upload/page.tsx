@@ -68,8 +68,6 @@ export default function RecipeUpload() {
             addedBy = session.user.email;
         }
 
-        console.log("image URL: ", imageURL);
-
         try {
             const res = await fetch("/api/recipe/upload", {
                 method: "POST",
@@ -121,10 +119,6 @@ export default function RecipeUpload() {
                         if (response.ok) {
                             const { url, fields, key } = await response.json();
 
-                            console.log(url);
-                            console.log(fields);
-                            console.log(key);
-
                             const formData = new FormData();
                             Object.entries(fields).forEach(([key, value]) => {
                                 formData.append(key, value as string)
@@ -132,8 +126,6 @@ export default function RecipeUpload() {
                             if (file) {
                                 formData.append('file', file);
                             };
-
-                            console.log(formData);
 
                             const uploadResponse = await fetch(url, {
                                 method: 'POST',
@@ -143,9 +135,7 @@ export default function RecipeUpload() {
                                     "Access-Control-Allow-Headers": "*"
                                 },
                             })
-
-                            console.log(uploadResponse);
-
+                            
                             if (uploadResponse.ok) {
                                 setImageURL("https://gastronomicon.s3.amazonaws.com/" + key);
                                 alert('Upload successful!');

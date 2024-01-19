@@ -16,7 +16,6 @@ export const POST = async (request: NextRequest) => {
     });
 
     try {
-        console.log(newUser);
         await newUser.save();
         return new NextResponse("User has been created", {
             status: 201,

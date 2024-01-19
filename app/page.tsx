@@ -17,8 +17,6 @@ export default async function Home() {
         redirect("/login");
     }
 
-    console.log("dashboard, user logged in: ", session.user.email);
-
     let recipesList;
 
     try {
@@ -29,8 +27,6 @@ export default async function Home() {
     } catch (err: any) {
         console.log(err);
     }
-
-    // const recipesList = await Recipe.find();
 
     return (
         <main className={styles.main}>
@@ -45,9 +41,6 @@ export default async function Home() {
                 <Link href="/recipe/upload" className={styles.addRecipeButton}>+ Add recipe</Link>
             </div>
             <div className={styles.recipeGrid}>
-                {/* {recipesList && recipesList.map((recipe: { _id: string, recipeName: string; imageURL: string; }) => (
-                    <RecipeCard _id={recipe._id} name={recipe.recipeName} imageURL={recipe.imageURL}/>
-                ))} */}
                 {recipesList && JSON.parse(JSON.stringify(recipesList.recipesList)).map((recipe: { _id: string, recipeName: string; imageURL: string; }) => (
                     <RecipeCard _id={recipe._id} name={recipe.recipeName} imageURL={recipe.imageURL}/>
                 ))}

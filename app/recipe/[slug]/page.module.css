@@ -1,8 +1,8 @@
 .main {
-  justify-content: space-between;
-  align-items: left;
-  padding: 3rem 5rem;
-  min-height: 100vh;
+    justify-content: space-between;
+    align-items: left;
+    padding: 3rem 5rem;
+    min-height: 100vh;
 }
 
 .recipeContainer {
@@ -40,7 +40,8 @@
     margin-top: 5px;
 }
 
-.ingredientsHeading, .instructionsHeading {
+.ingredientsHeading,
+.instructionsHeading {
     font-size: 1.5rem;
     font-family: var(--font-heading);
     margin: 1rem 0;
@@ -94,7 +95,7 @@
 }
 
 .linkContainer {
-    align-items:flex-start;
+    align-items: flex-start;
 }
 
 .linkURL {
@@ -104,6 +105,7 @@
 .imageContainer {
     width: 230px;
     height: 230px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;

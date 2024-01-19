@@ -1,16 +1,23 @@
 .recipeCard {
     width: 15rem;
+    height: 19rem;
     color: var(--light-accent);
     border-radius: var(--border-radius);
-    /* padding: 0.2rem 0.5rem;
-    margin: 10px;
-    background-color: var(--dark-accent); */
+    margin: 0px 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.recipeCard:hover {
+    background-image: linear-gradient(to bottom right, var(--background-color), var(--dark-accent),  var(--background-color));
 }
 
 .name {
     text-align: center;
-    margin: 0px 20px;
+    margin: 10px 20px;
+    margin-top: 15px;
     font-weight: 500;
     font-family: var(--font-heading);
 }
@@ -21,7 +28,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 15px;
 }
 
 .defaultImageContainer {
@@ -31,6 +37,7 @@
     justify-content: center;
     align-items: center;
     margin: 27px;
+    margin-top: 10px;
     background-color: var(--dark-accent);
 }
 
@@ -44,5 +51,4 @@
     margin: 0 auto;
     width: 60%;
     height: 60%;
-    /* border: 3px solid var(--text-color); */
 }

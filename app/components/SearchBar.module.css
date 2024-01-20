@@ -27,3 +27,19 @@
 .icon {
     width: 17px;
 }
+
+.searchButton {
+    background-color: transparent;
+    border: none;
+    width: 17px;
+    height: 30px;
+}
+
+.searchButton > span {
+    width: 100%;
+    height: 100%;
+}
+
+.searchButton:hover {
+    cursor: pointer;
+}

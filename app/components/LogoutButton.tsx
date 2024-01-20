@@ -1,16 +1,25 @@
-import styles from '@/app/page.module.css';
+'use client';
+
+import styles from './LogoutButton.module.css';
 
 import { signOut } from "next-auth/react";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-export default async function LogoutButton() {
-    // const logoutButtonClick = () => {
-    //     console.log("signing out");
-    //     // signOut();
-    // }
+export default function LogoutButton() {
+    const router = useRouter();
 
+    function logout(event: { preventDefault: () => void; }) {
+        event.preventDefault();
+
+        signOut();
+    }
+    
     return (
-        <button className={styles.logoutButton}>
-            <object type="image/svg+xml" data="/icons/logout.svg" className={styles.icon} />
+        <button className={styles.logoutButton} onClick={logout}>
+            <span>
+                <object type="image/svg+xml" data="/icons/logout.svg" className={styles.icon}/>
+            </span>
         </button>
     )
 }

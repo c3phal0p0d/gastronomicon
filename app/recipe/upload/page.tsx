@@ -32,12 +32,11 @@ export default function RecipeUpload() {
     const params = useSearchParams()!;
     const router = useRouter();
 
-    // const session = await getSession(authOptions);
-    // if (!session || !session.user) {
-    //     redirect("/login");
-    // }
+    const { data: session, status } = useSession();
 
-    const { data: session, status } = useSession()
+    // if (status !== "authenticated") {
+    //     router?.push("/login");
+    // }
 
     const {
         register,

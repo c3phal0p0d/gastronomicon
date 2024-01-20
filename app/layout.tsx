@@ -22,7 +22,7 @@ export default function RootLayout({
             <body className={inter.className}>
                 <NextAuthProvider>
                     {children}
-                    {/* <Footer /> */}
+                    <Footer />
                 </NextAuthProvider>
             </body>
         </html>

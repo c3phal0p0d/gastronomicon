@@ -9,18 +9,20 @@ import LogoutButton from "@/app/components/LogoutButton";
 
 import { authOptions } from "./utils/auth";
 import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 
-export default async function Home() {
+export default async function Home({ params, searchParams }: { params: { id: string }; searchParams: { [key: string]: string | string[] | undefined } }) {
     const session = await getServerSession(authOptions);
+
     if (!session || !session.user) {
         redirect("/login");
     }
 
     let recipesList;
+    const searchQuery = searchParams?.q || "";
 
     try {
-        const res = await fetch(process.env.APP_URL + "/api/recipe/get-all?email=" + session.user.email, {
+        const res = await fetch(process.env.APP_URL + `/api/recipe/get-all?email=${session.user.email}&q=${searchQuery}`, {
             method: "GET",
         });
         recipesList = await res.json();
@@ -36,7 +38,7 @@ export default async function Home() {
                 <h1 className={styles.heading}>Gastronomicon</h1>
             </div>
             <div className={styles.searchFilterBar}>
-                <SearchBar />
+                <SearchBar/>
                 {/* <FilterBar/> */}
                 <Link href="/recipe/upload" className={styles.addRecipeButton}>+ Add recipe</Link>
             </div>

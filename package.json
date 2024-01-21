@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@aws-sdk/s3-presigned-post": "^3.490.0",
+    "@mantine/dropzone": "^7.4.2",
     "@vercel/blob": "^0.16.1",
     "mongodb-client-encryption": "^6.0.0",
     "mongoose": "^8.0.3",

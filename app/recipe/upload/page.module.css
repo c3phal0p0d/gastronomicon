@@ -82,6 +82,10 @@
     font-size: 0.75rem;
 }
 
+.submitButton:hover, .cancelButton:hover, .uploadImageButton:hover {
+    cursor: pointer;
+}
+
 .loginHeading {
     font: var(--font-heading);
     font-size: 1.5rem;

@@ -11,6 +11,7 @@ import { redirect } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Link from 'next/link';
 import { getSession, useSession } from 'next-auth/react';
+import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE, FileWithPath } from '@mantine/dropzone';
 
 type Inputs = {
     recipeName: string,
@@ -99,7 +100,7 @@ export default function RecipeUpload() {
                 <form className={styles.imageUploadForm}
                     onSubmit={async (event) => {
                         event.preventDefault();
-
+9
                         setUploading(true);
 
                         console.log("app url: ", process.env.APP_URL);
@@ -134,7 +135,7 @@ export default function RecipeUpload() {
                                     "Access-Control-Allow-Headers": "*"
                                 },
                             })
-                            
+
                             if (uploadResponse.ok) {
                                 setImageURL("https://gastronomicon.s3.amazonaws.com/" + key);
                                 alert('Upload successful!');
@@ -159,6 +160,7 @@ export default function RecipeUpload() {
                             }
                         }}
                         accept="image/png, image/jpeg"
+                        className={styles.fileInput}
                     />
                     <button type="submit" className={styles.uploadImageButton} disabled={uploading}>Upload</button>
                 </form>

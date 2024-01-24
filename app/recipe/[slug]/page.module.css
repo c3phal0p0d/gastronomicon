@@ -120,3 +120,37 @@
     width: 60%;
     /* border: 3px solid var(--text-color); */
 }
+
+.deleteEditContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: absolute;
+    right: 120px;
+}
+
+.button {
+    height: 45px;
+    width: 45px;
+    padding-top: 3px;
+    padding-left: 10px;
+    margin: 0px 15px;
+    border: 1px solid var(--text-color);
+    border-radius: 100%;
+    font-size: 1rem;
+    background-color: transparent;
+    vertical-align: middle;
+    margin-left: auto;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.deleteIcon, .editIcon {
+    width: 20px;
+    margin-right: 10px;
+    margin-top: 5px;
+    pointer-events: none;
+}

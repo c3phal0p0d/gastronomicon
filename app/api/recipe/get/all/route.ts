@@ -1,5 +1,5 @@
-import Recipe from "../../../models/Recipe";
-import dbConnect from "../../../utils/dbConnect";
+import Recipe from "../../../../models/Recipe";
+import dbConnect from "../../../../utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {

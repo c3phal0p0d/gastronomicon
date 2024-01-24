@@ -22,7 +22,7 @@ export default async function Home({ params, searchParams }: { params: { id: str
     const searchQuery = searchParams?.q || "";
 
     try {
-        const res = await fetch(process.env.APP_URL + `/api/recipe/get-all?email=${session.user.email}&q=${searchQuery}`, {
+        const res = await fetch(process.env.APP_URL + `/api/recipe/get/all?email=${session.user.email}&q=${searchQuery}`, {
             method: "GET",
         });
         recipesList = await res.json();

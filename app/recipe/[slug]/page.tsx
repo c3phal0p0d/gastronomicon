@@ -5,6 +5,7 @@ import useSWR from 'swr'
 import dbConnect from '@/app/utils/dbConnect'
 import Recipe from "@/app/models/Recipe";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode, Key } from 'react'
+import DeleteButton from '@/app/components/DeleteButton'
 
 export default async function RecipePage({ params }: { params: { slug: string } }) {
     let recipe;
@@ -49,6 +50,12 @@ export default async function RecipePage({ params }: { params: { slug: string } 
                                 {recipe.sourceURL != "" ? <Link href={recipe.sourceURL} className={styles.linkURL}> {recipe.sourceURL}</Link> : " N/A"}
                             </div>
                         </div>
+                    </div>
+                    <div className={styles.deleteEditContainer}>
+                        <DeleteButton id={params.slug}/>
+                        {/* <button className={styles.button}>
+                            <object type="image/svg+xml" data="/icons/edit.svg" className={styles.editIcon} />
+                        </button> */}
                     </div>
                 </div>
                 <div className={styles.bottom}>
